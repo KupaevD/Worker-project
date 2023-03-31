@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Открывашка инцидента</title>
+</head>
+
+<body>
+
+    <form onsubmit="gen(); return false">
+
+        <p>Лидер разбора: <input id="leader" type="text" name="c" autofocus></p>
+        <p>Лидер разбора: <output id="anoncer-leader" name="result"></output></p>
+        <p>Гипотеза: <input id="hypothesis" type="text" name="d" autofocus></p>
+        <p>Гипотеза: <output id="anoncer-hypothesis" name="d">0</output></p>
+        <p>Введите номер инцидента: <input id="inc" type="number" name="cm" autofocus></p>
+        <p>Номер инцидента: DSTR - <output id="anoncer-inc" name="result">0</output></p>
+        <p><input type="submit" value="Сформировать"></p>
+    </form>
+
+    <div style="margin-top: 1.5em;">
+        Инцидент открыт.
+        <br>• Дата: <span id="result-date">ххххх</span>
+        <br>• Проблема: ххххх.
+        <br>• Недоступность системы: ххххх.
+        <br>• Причина: <span id="result-hypothesis">ххххх</span>
+        <br>• Название и класс критичности системы: ххххх.
+        <br>• Время начала инцидента: ххххх.
+        <br>• Время окончания инцидента: ххххх.
+        <br>• Продолжительность инцидента: ххххх.
+        <br>• Номер инцидента: DSTR-<span id="result-inc">ххх</span>.
+        <br>• Ответственный за подготовку отчета: <span id="result-leader">ххххх</span>.
+        <br>В отчете будет предоставлена информация по недопущению повторения инцидента.
+        Приносим извинения за доставленные неудобства.
+    </div>
+
+    <script>
+        // срабатывает при нажатии кнопки отправить
+        function gen() {
+            document.getElementById('result-date').innerHTML = get_date();
+
+            document.getElementById('result-inc').innerHTML = document.getElementById('inc').value;
+            document.getElementById('result-leader').innerHTML = document.getElementById('leader').value;
+            document.getElementById('result-hypothesis').innerHTML = document.getElementById('hypothesis').value;
+
+            return false;
+        }
+
+        // регистрируем события, которые будут срабатывать после каждого нажатия внутри верхних полей
+        document.getElementById('leader').onkeyup = function () { document.getElementById('anoncer-leader').innerHTML = this.value; };
+        document.getElementById('hypothesis').onkeyup = function () { document.getElementById('anoncer-hypothesis').innerHTML = this.value; };
+        document.getElementById('inc').onkeyup = function () { document.getElementById('anoncer-inc').innerHTML = this.value; };
+        document.getElementById('inc').onchange = function () { document.getElementById('anoncer-inc').innerHTML = this.value; };
+
+        // формируем дату, которая нам подходит
+        function get_date() {
+            let d = new Date();
+            return (('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear() + ' ' + ('0' + (d.getHours())).slice(-2)) + ':' + ('0' + d.getMinutes()).slice(-2);
+        }
+    </script>
+
+
+</body>
+
+</html>
