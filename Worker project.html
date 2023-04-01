@@ -3,31 +3,36 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Открывашка инцидента</title>
+    <title>Закрывашка инцидента</title>
 </head>
 
 <body>
 
     <form onsubmit="gen(); return false">
 
-        <p>Лидер разбора: <input id="leader" type="text" name="c" autofocus></p>
-        <p>Лидер разбора: <output id="anoncer-leader" name="result"></output></p>
-        <p>Гипотеза: <input id="hypothesis" type="text" name="d" autofocus></p>
-        <p>Гипотеза: <output id="anoncer-hypothesis" name="d">0</output></p>
-        <p>Введите номер инцидента: <input id="inc" type="number" name="cm" autofocus></p>
-        <p>Номер инцидента: DSTR - <output id="anoncer-inc" name="result">0</output></p>
+        <p>Проблема: <input id="problem" type="text" autofocus></p>
+        <p>Недоступность системы: <input id="inaccessibility" type="text" autofocus></p>
+        <p>Лидер разбора: <input id="leader" type="text" autofocus></p>
+        <p>Гипотеза: <input id="hypothesis" type="text" autofocus></p>
+        <p>Название и класс критичности: <input id="system" type="text" autofocus></p>
+        <p>Введите номер инцидента: <input id="inc" type="number" autofocus></p>
+        <p>Время начала: <input id="startTime" type="time" autofocus></p>
+        <p>Время окончания: <input id="finishTime" type="time" autofocus></p>
+
+
+        
         <p><input type="submit" value="Сформировать"></p>
     </form>
 
     <div style="margin-top: 1.5em;">
-        Инцидент открыт.
+        Инцидент закрыт.
         <br>• Дата: <span id="result-date">ххххх</span>
-        <br>• Проблема: ххххх.
-        <br>• Недоступность системы: ххххх.
+        <br>• Проблема: <span id="result-problem">ххххх</span>
+        <br>• Недоступность системы: <span id="result-inaccessibility"> ххххх.</span>
         <br>• Причина: <span id="result-hypothesis">ххххх</span>
-        <br>• Название и класс критичности системы: ххххх.
-        <br>• Время начала инцидента: ххххх.
-        <br>• Время окончания инцидента: ххххх.
+        <br>• Название и класс критичности системы: <span id="result-system"> ххххх</span>
+        <br>• Время начала инцидента: <span id="result-startTime"></span>.
+        <br>• Время окончания инцидента: <span id="result-finishTime"></span>.
         <br>• Продолжительность инцидента: ххххх.
         <br>• Номер инцидента: DSTR-<span id="result-inc">ххх</span>.
         <br>• Ответственный за подготовку отчета: <span id="result-leader">ххххх</span>.
@@ -40,6 +45,11 @@
         function gen() {
             document.getElementById('result-date').innerHTML = get_date();
 
+            document.getElementById('result-finishTime').innerHTML = document.getElementById('finishTime').value;
+            document.getElementById('result-startTime').innerHTML = document.getElementById('startTime').value;
+            document.getElementById('result-system').innerHTML = document.getElementById('system').value;
+            document.getElementById('result-inaccessibility').innerHTML = document.getElementById('inaccessibility').value;
+            document.getElementById('result-problem').innerHTML = document.getElementById('problem').value;
             document.getElementById('result-inc').innerHTML = document.getElementById('inc').value;
             document.getElementById('result-leader').innerHTML = document.getElementById('leader').value;
             document.getElementById('result-hypothesis').innerHTML = document.getElementById('hypothesis').value;
@@ -50,8 +60,8 @@
         // регистрируем события, которые будут срабатывать после каждого нажатия внутри верхних полей
         document.getElementById('leader').onkeyup = function () { document.getElementById('anoncer-leader').innerHTML = this.value; };
         document.getElementById('hypothesis').onkeyup = function () { document.getElementById('anoncer-hypothesis').innerHTML = this.value; };
-        document.getElementById('inc').onkeyup = function () { document.getElementById('anoncer-inc').innerHTML = this.value; };
-        document.getElementById('inc').onchange = function () { document.getElementById('anoncer-inc').innerHTML = this.value; };
+        document.getElementById('inc').onkeyup = function(){ document.getElementById('anoncer-inc').innerHTML = this.value; };
+        document.getElementById('inc').onchange = function(){ document.getElementById('anoncer-inc').innerHTML = this.value; };
 
         // формируем дату, которая нам подходит
         function get_date() {
