@@ -3,62 +3,149 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Закрывашка инцидента</title>
+    <title>Открывашка инцидента</title>
 </head>
 
 <body>
 
     <form onsubmit="gen(); return false">
 
+    <input id="trafficLight" type="text" list="listA">
+    <datalist id="listA">    
+        <option> <spаn style="font-size: 16px;">&#128996</spаn> </option>
+        <option> <spаn style="font-size: 16px;">&#128308</spаn> </option>
+        <option> <spаn style="font-size: 16px;">&#x1f7e1</spаn> </option>
+    </datalist>
+        Инциент одткрыт.
         <p>Проблема: <input id="problem" type="text" autofocus></p>
-        <p>Недоступность системы: <input id="inaccessibility" type="text" autofocus></p>
-        <p>Лидер разбора: <input id="leader" type="text" autofocus></p>
-        <p>Гипотеза: <input id="hypothesis" type="text" autofocus></p>
-        <p>Название и класс критичности: <input id="system" type="text" autofocus></p>
-        <p>Введите номер инцидента: <input id="inc" type="number" autofocus></p>
+        <p>Лидер разбора: <input id="leaderInc" type="text" list="listLeader" autofocus></p>
+        <datalist id="listLeader">
+            <option value="Рязанов Максим"></option>
+            <option value="Золотухин Кирилл"></option>
+            <option value="Соколов Владислав"></option>
+            <option value="Ефремов Д."></option>
+            <option value="Тихонов П."></option>
+            <option value="Мишенькин Д."></option>
+        </datalist>
+        <p>Ситема и класс критичности: <input id="system" type="text" autofocus></p>
+        <p>Недоступность системы: <input id="inaccessibility" type="text" list="list" autofocus></p>
+        <datalist id="list">
+            <option value="Полная"></option>
+            <option value="Частичная"></option>
+        </datalist>
+        <p>Как проявляется: <input id="appears" type="text" autofocus></p>
+        <p>У кого проблема: <input id="userProblem" type="text" list="listX" autofocus></p>
+        <datalist id="listX">
+            <option value="Внутренние пользователи"></option>
+            <option value="Внешние пользователи"></option>
+        </datalist>
+        <p>Затронуто пользователей: <input id="affectedUsers" type="number" autofocus></p>
         <p>Время начала: <input id="startTime" type="time" autofocus></p>
-        <p>Время окончания: <input id="finishTime" type="time" autofocus></p>
+        <p>Гипотеза: <input id="hypothesis" type="text" autofocus></p>
+        <p>Введите номер инцидента: <input id="inc" type="number" autofocus></p>
 
-
-        
         <p><input type="submit" value="Сформировать"></p>
     </form>
 
-    <div style="margin-top: 1.5em;">
-        Инцидент закрыт.
+    <div id="open" style="margin-top: 1.5em;">
+        <br> <span id="result-trafficLight"></span>Инцидент открыт.
+        <br>• Наблюдается <span id="result-problem">ххххх</span>.
+        <br>• Лидер расследования: <span id="result-leaderInc">ххххх</span>.
+        <br>• Затронуты системы системы: <span id="result-system"> ххххх</span>.
+        <br>• Недоступность системы: <span id="result-inaccessibility"> ххххх.</span>.
+        <br>• Как проявляется: <span id="result-appears">ххххх</span>.
+        <br>• У кого проблема: <span id="result-userProblem">xxxx</span>.
+        <br>• Затронуто пользователей:<span id="result-affectedUsers">xxxx</span> пользователей.
         <br>• Дата: <span id="result-date">ххххх</span>
-        <br>• Проблема: <span id="result-problem">ххххх</span>
-        <br>• Недоступность системы: <span id="result-inaccessibility"> ххххх.</span>
-        <br>• Причина: <span id="result-hypothesis">ххххх</span>
-        <br>• Название и класс критичности системы: <span id="result-system"> ххххх</span>
         <br>• Время начала инцидента: <span id="result-startTime"></span>.
-        <br>• Время окончания инцидента: <span id="result-finishTime"></span>.
-        <br>• Продолжительность инцидента: ххххх.
+        <br>• Гипотеза: <span id="result-hypothesis">ххххх</span>.
+        <br>• Предварительный срок решения: 30 минут.
         <br>• Номер инцидента: DSTR-<span id="result-inc">ххх</span>.
-        <br>• Ответственный за подготовку отчета: <span id="result-leader">ххххх</span>.
+
+    </div>
+
+    <br>-------------------------------------------------------------------------------------------------------
+
+    <form onsubmit="gen(); return false">
+    <p>Лидер расследования: <input id="leader" type="text" autofocus></p>
+    <p>Время окончания: <input id="finishTime" type="time" autofocus></p>
+    <p>Продолжительность инцидента: <input id="duration" type="number" autofocus></p></p>
+    <p>Статус: <input id="status" type="text" autofocus></p>
+    <p>Корневая причина или гипотеза <input id="cause" list="listСause" type="text" autofocus></p>
+    <datalist id="listСause">
+        <option value="Гипотеза"></option>
+        <option value="Корневая причина"></option>
+    </datalist>
+
+    <p><input type="submit" value="Сформировать"></p>
+    </form>
+
+    <div id="close" style="margin-top: 1.5em;">    
+        <spаn style="font-size: 16px;">&#128994</spаn>Инцидент закрыт.
+        <br>• Проблема: наблюдалась <span id="result-problem-1">ххххх</span>.
+        <br>• Лидер расследования: <span id="result-leader">ххххх</span>.
+        <br>• Название и класс критичности системы: <span id="result-system-1"> ххххх</span>.
+        <br>• Недоступность системы: <span id="result-inaccessibility-1"> ххххх.</span>.
+        <br>• Как проявлялось: <span id="result-appears-1">ххххх</span>.
+        <br>• У кого проблема: <span id="result-userProblem-1">xxxx</span>.
+        <br>• Затронуто пользователей:<span id="result-affectedUsers-1">xxxx</span> пользователей.
+        <br>• Дата: <span id="result-date-1">ххххх</span>
+        <br>• Время начала: <span id="result-startTime-1"></span>.
+        <br>• Время устранения: <span id="result-finishTime"></span>.
+        <br>• Продолжительность инцидента: <span id="result-duration"></span> минут.
+        <br>• Статус: <span id="result-status">ххххх</span>.
+        <br>• <span id="result-cause"></span>: <span id="result-hypothesis-1">ххххх</span>.
+        <br>• Номер инцидента: DSTR-<span id="result-inc-1">ххх</span>.
         <br>В отчете будет предоставлена информация по недопущению повторения инцидента.
         Приносим извинения за доставленные неудобства.
+
     </div>
+
 
     <script>
         // срабатывает при нажатии кнопки отправить
         function gen() {
             document.getElementById('result-date').innerHTML = get_date();
+            document.getElementById('result-date-1').innerHTML = get_date();
 
-            document.getElementById('result-finishTime').innerHTML = document.getElementById('finishTime').value;
-            document.getElementById('result-startTime').innerHTML = document.getElementById('startTime').value;
-            document.getElementById('result-system').innerHTML = document.getElementById('system').value;
-            document.getElementById('result-inaccessibility').innerHTML = document.getElementById('inaccessibility').value;
             document.getElementById('result-problem').innerHTML = document.getElementById('problem').value;
+            document.getElementById('result-problem-1').innerHTML = document.getElementById('problem').value;
+            document.getElementById('result-leaderInc').innerHTML = document.getElementById('leaderInc').value;
+            document.getElementById('result-system').innerHTML = document.getElementById('system').value;
+            document.getElementById('result-system-1').innerHTML = document.getElementById('system').value;
+            document.getElementById('result-inaccessibility').innerHTML = document.getElementById('inaccessibility').value;
+            document.getElementById('result-inaccessibility-1').innerHTML = document.getElementById('inaccessibility').value;
+            document.getElementById('result-appears').innerHTML = document.getElementById('appears').value;
+            document.getElementById('result-appears-1').innerHTML = document.getElementById('appears').value;
+            document.getElementById('result-userProblem').innerHTML = document.getElementById('userProblem').value;
+            document.getElementById('result-userProblem-1').innerHTML = document.getElementById('userProblem').value;
+            document.getElementById('result-affectedUsers').innerHTML = document.getElementById('affectedUsers').value;
+            document.getElementById('result-affectedUsers-1').innerHTML = document.getElementById('affectedUsers').value;
+            document.getElementById('result-startTime').innerHTML = document.getElementById('startTime').value;
+            document.getElementById('result-startTime-1').innerHTML = document.getElementById('startTime').value;
+            document.getElementById('result-hypothesis').innerHTML = document.getElementById('hypothesis').value;
+            document.getElementById('result-hypothesis-1').innerHTML = document.getElementById('hypothesis').value;         
             document.getElementById('result-inc').innerHTML = document.getElementById('inc').value;
             document.getElementById('result-leader').innerHTML = document.getElementById('leader').value;
-            document.getElementById('result-hypothesis').innerHTML = document.getElementById('hypothesis').value;
+            document.getElementById('result-finishTime').innerHTML = document.getElementById('finishTime').value;
+            document.getElementById('result-duration').innerHTML = document.getElementById('duration').value;
+            document.getElementById('result-inc-1').innerHTML = document.getElementById('inc').value;
+            document.getElementById('result-trafficLight').innerHTML = document.getElementById('trafficLight').value;
+            document.getElementById('result-status').innerHTML = document.getElementById('status').value;
+            document.getElementById('result-cause').innerHTML = document.getElementById('cause').value;
 
             return false;
         }
 
         // регистрируем события, которые будут срабатывать после каждого нажатия внутри верхних полей
-        document.getElementById('leader').onkeyup = function () { document.getElementById('anoncer-leader').innerHTML = this.value; };
+        document.getElementById('problem').onkeyup = function () { document.getElementById('anoncer-problem').innerHTML = this.value; };
+        document.getElementById('leaderInc').onkeyup = function () { document.getElementById('anoncer-leaderInc').innerHTML = this.value; };
+        document.getElementById('system').onkeyup = function () { document.getElementById('anoncer-system').innerHTML = this.value; };
+        document.getElementById('inaccessibility').onkeyup = function () { document.getElementById('anoncer-inaccessibility').innerHTML = this.value; };
+        document.getElementById('appears').onkeyup = function () { document.getElementById('anoncer-appears').innerHTML = this.value; };
+        document.getElementById('userProblem').onkeyup = function () { document.getElementById('anoncer-userProblem').innerHTML = this.value; };
+        document.getElementById('affectedUsers').onkeyup = function () { document.getElementById('anoncer-affectedUsers').innerHTML = this.value; };
+        document.getElementById('startTime').onkeyup = function () { document.getElementById('anoncer-startTime').innerHTML = this.value; };
         document.getElementById('hypothesis').onkeyup = function () { document.getElementById('anoncer-hypothesis').innerHTML = this.value; };
         document.getElementById('inc').onkeyup = function(){ document.getElementById('anoncer-inc').innerHTML = this.value; };
         document.getElementById('inc').onchange = function(){ document.getElementById('anoncer-inc').innerHTML = this.value; };
@@ -66,8 +153,9 @@
         // формируем дату, которая нам подходит
         function get_date() {
             let d = new Date();
-            return (('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear() + ' ' + ('0' + (d.getHours())).slice(-2)) + ':' + ('0' + d.getMinutes()).slice(-2);
+            return (('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear() + '.');
         }
+
     </script>
 
 
