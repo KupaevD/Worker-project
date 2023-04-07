@@ -10,14 +10,13 @@
 
     <form onsubmit="gen(); return false">
 
-    <input id="trafficLight" type="text" list="listA">
+    Выбери светофор -<input id="trafficLight" type="text" list="listA">  
     <datalist id="listA">    
         <option> <spаn style="font-size: 16px;">&#128996</spаn> </option>
         <option> <spаn style="font-size: 16px;">&#128308</spаn> </option>
         <option> <spаn style="font-size: 16px;">&#x1f7e1</spаn> </option>
     </datalist>
-        Инциент одткрыт.
-        <p>Проблема: <input id="problem" type="text" autofocus></p>
+        <p>Проблема: Наблюдается...<input id="problem" type="text" autofocus></p>
         <p>Лидер разбора: <input id="leaderInc" type="text" list="listLeader" autofocus></p>
         <datalist id="listLeader">
             <option value="Рязанов Максим"></option>
@@ -27,7 +26,66 @@
             <option value="Тихонов П."></option>
             <option value="Мишенькин Д."></option>
         </datalist>
-        <p>Ситема и класс критичности: <input id="system" type="text" autofocus></p>
+        <p>Ситема и класс критичности: <input id="system" type="text" list="listSystem" autofocus></p>
+        <datalist id="listSystem">
+            <option value="New Athene / MC"></option>
+            <option value="СПР / ВС"></option>
+            <option value="Процессинг карт (Way4) / МС"></option>
+            <option value="ДБО ФЛ / MC"></option>
+            <option value="Сервер нотификации / MC"></option>
+            <option value="Kubernetes / MC"></option>
+            <option value="CRM-BANK / MC"></option>
+            <option value="CRM-DOM / MC"></option>
+            <option value="АПИКС / BC"></option>
+            <option value="ПП Дельта / MC"></option>
+            <option value="ДБО ЮЛ / MC"></option>
+            <option value="ЕИСЖС / MC"></option>
+            <option value="DOM.API / BC"></option>
+            <option value="ЕФО Flextera (банк) / BC"></option>
+            <option value="ЕФО Flextera (ДОМ) / BC"></option>
+            <option value="СБП / MC"></option>
+            <option value="Кольцо сайтов - BNK / BC"></option>
+            <option value="Кольцо сайтов - DOM / BC"></option>
+            <option value="ПО ФОНД / BC"></option>
+            <option value="ЮЗ ЭДО / BC"></option>
+            <option value="MAIL-BNK / BC"></option>
+            <option value="FIS / BC"></option>
+            <option value="Кредитная дорога / BC"></option>
+            <option value="ONIX / BC"></option>
+            <option value="KHD / BC"></option>
+            <option value="Персей / BC"></option>
+            <option value="ПО КОНТАКТ / BC"></option>
+            <option value="АПАЖ / BC"></option>
+            <option value="СЭД / BC"></option>
+            <option value="SAS APRO / BC"></option>
+            <option value="MAIL-DOM / BC"></option>
+            <option value="Credit Registry / BC"></option>
+            <option value="ЕИСУРД / BC"></option>
+            <option value="SMARTIVR / BC"></option>
+            <option value="1C-DOM / BC"></option>
+            <option value="1C-BANK / BC"></option>
+            <option value="ЛК Заёмщика / BC"></option>
+            <option value="SWIFT / BC"></option>
+            <option value="ЕИС / BC"></option>
+            <option value="АС ЕХД / BC"></option>
+            <option value="ВСО / MC"></option>
+            <option value="АС DOM.Login / BC"></option>
+            <option value="Контактный центр (GENESYS) / BC"></option>
+            <option value="ЛКЗ (Застройщика)"></option>
+            <option value="Exchange ЦС / BC"></option>
+            <option value="АС VDI Банк / BC"></option>
+            <option value="АС VDI ДОМ / BC"></option>
+            <option value="МС ЕФО / BC"></option>
+            <option value="АХД / BC"></option>
+            <option value="Отчётность с ЦБ и ФОИВ / BC"></option>
+            <option value="Поливрат / BC"></option>
+            <option value="ЛК ЦБ из сети ДОМа / BC"></option>
+            <option value="ЛК ЦБ из сети Банка / BC"></option>
+            <option value="АС Прокси сервер Дом.рф / BC"></option>
+            <option value="АС МСЭ АО «Банк ДОМ.РФ» / BC"></option>
+            <option value="АС МСЭ АО «ДОМ.РФ» / BC"></option>
+            
+        </datalist>
         <p>Недоступность системы: <input id="inaccessibility" type="text" list="list" autofocus></p>
         <datalist id="list">
             <option value="Полная"></option>
@@ -38,11 +96,12 @@
         <datalist id="listX">
             <option value="Внутренние пользователи"></option>
             <option value="Внешние пользователи"></option>
+            <option value="Внутренние и внешние пользователи"></option>
         </datalist>
         <p>Затронуто пользователей: <input id="affectedUsers" type="number" autofocus></p>
         <p>Время начала: <input id="startTime" type="time" autofocus></p>
         <p>Гипотеза: <input id="hypothesis" type="text" autofocus></p>
-        <p>Введите номер инцидента: <input id="inc" type="number" autofocus></p>
+        <p>Введите номер инцидента: DSTR-<input id="inc" type="number" autofocus></p>
 
         <p><input type="submit" value="Сформировать"></p>
     </form>
@@ -51,8 +110,8 @@
         <br> <span id="result-trafficLight"></span>Инцидент открыт.
         <br>• Наблюдается <span id="result-problem">ххххх</span>.
         <br>• Лидер расследования: <span id="result-leaderInc">ххххх</span>.
-        <br>• Затронуты системы системы: <span id="result-system"> ххххх</span>.
-        <br>• Недоступность системы: <span id="result-inaccessibility"> ххххх.</span>.
+        <br>• Затронуты системы: АС <span id="result-system"> ххххх</span>.
+        <br>• Недоступность системы: <span id="result-inaccessibility"> ххххх</span>.
         <br>• Как проявляется: <span id="result-appears">ххххх</span>.
         <br>• У кого проблема: <span id="result-userProblem">xxxx</span>.
         <br>• Затронуто пользователей:<span id="result-affectedUsers">xxxx</span> пользователей.
@@ -67,10 +126,10 @@
     <br>-------------------------------------------------------------------------------------------------------
 
     <form onsubmit="gen(); return false">
-    <p>Лидер расследования: <input id="leader" type="text" autofocus></p>
+    <p>Ответственный за заполнение отчета: <input id="leader" type="text" autofocus></p>
     <p>Время окончания: <input id="finishTime" type="time" autofocus></p>
     <p>Продолжительность инцидента: <input id="duration" type="number" autofocus></p></p>
-    <p>Статус: <input id="status" type="text" autofocus></p>
+    
     <p>Корневая причина или гипотеза <input id="cause" list="listСause" type="text" autofocus></p>
     <datalist id="listСause">
         <option value="Гипотеза"></option>
@@ -82,10 +141,11 @@
 
     <div id="close" style="margin-top: 1.5em;">    
         <spаn style="font-size: 16px;">&#128994</spаn>Инцидент закрыт.
-        <br>• Проблема: наблюдалась <span id="result-problem-1">ххххх</span>.
-        <br>• Лидер расследования: <span id="result-leader">ххххх</span>.
+        <br>• Наблюдалась <span id="result-problem-1">ххххх</span>.
+        <br>• Лидер расследования: <span id="result-leaderInc-1">ххххх</span>.
+        <br>• Ответственный за заполнение отчета: <span id="result-leader">ххххх</span>.
         <br>• Название и класс критичности системы: <span id="result-system-1"> ххххх</span>.
-        <br>• Недоступность системы: <span id="result-inaccessibility-1"> ххххх.</span>.
+        <br>• Недоступность системы: <span id="result-inaccessibility-1"> ххххх</span>.
         <br>• Как проявлялось: <span id="result-appears-1">ххххх</span>.
         <br>• У кого проблема: <span id="result-userProblem-1">xxxx</span>.
         <br>• Затронуто пользователей:<span id="result-affectedUsers-1">xxxx</span> пользователей.
@@ -93,7 +153,7 @@
         <br>• Время начала: <span id="result-startTime-1"></span>.
         <br>• Время устранения: <span id="result-finishTime"></span>.
         <br>• Продолжительность инцидента: <span id="result-duration"></span> минут.
-        <br>• Статус: <span id="result-status">ххххх</span>.
+        <br>• Статус: На данный момент сервис восстановлен и работает в штатном режиме.
         <br>• <span id="result-cause"></span>: <span id="result-hypothesis-1">ххххх</span>.
         <br>• Номер инцидента: DSTR-<span id="result-inc-1">ххх</span>.
         <br>В отчете будет предоставлена информация по недопущению повторения инцидента.
@@ -111,6 +171,7 @@
             document.getElementById('result-problem').innerHTML = document.getElementById('problem').value;
             document.getElementById('result-problem-1').innerHTML = document.getElementById('problem').value;
             document.getElementById('result-leaderInc').innerHTML = document.getElementById('leaderInc').value;
+            document.getElementById('result-leaderInc-1').innerHTML = document.getElementById('leaderInc').value;
             document.getElementById('result-system').innerHTML = document.getElementById('system').value;
             document.getElementById('result-system-1').innerHTML = document.getElementById('system').value;
             document.getElementById('result-inaccessibility').innerHTML = document.getElementById('inaccessibility').value;
@@ -131,8 +192,8 @@
             document.getElementById('result-duration').innerHTML = document.getElementById('duration').value;
             document.getElementById('result-inc-1').innerHTML = document.getElementById('inc').value;
             document.getElementById('result-trafficLight').innerHTML = document.getElementById('trafficLight').value;
-            document.getElementById('result-status').innerHTML = document.getElementById('status').value;
             document.getElementById('result-cause').innerHTML = document.getElementById('cause').value;
+
 
             return false;
         }
@@ -154,6 +215,29 @@
         function get_date() {
             let d = new Date();
             return (('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear() + '.');
+
+            // берём время начала
+            var startTime = document.getElementById('startTime').value;
+// делаем из него массив из 2-х элементов (до и после двоеточия)
+            var time_arr = startTime.split('10:22');
+// делаем новый объект с датой, т.к. в JS нет объекта времени
+            var d1 = new Date();
+// часы до двоеточия
+            d1.setHours(time_arr[0]);
+// минуты после
+            d1.setMinutes(time_arr[1]);
+// берём время конца и делаем тоже самое
+            var finishTime = document.getElementById('finishTime').value;
+            var time_arr = finishTime.split('10:32')
+            var d2 = new Date();
+            d2.setHours(time_arr[0]);
+            d2.setMinutes(time_arr[1]);
+// считаем разницу
+            var date_diff = new Date(d2 - d1);
+// выводим на страницу в минутах или как угодно ещё
+            var el = document.getElementById('result-duration')
+            el.innerText = date_diff.getHours() * 60 + date_diff.getMinutes()
+            
         }
 
     </script>
